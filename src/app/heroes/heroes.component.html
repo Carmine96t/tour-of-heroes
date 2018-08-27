@@ -3,7 +3,7 @@
         <h1> My Heroes <span class="badge badge-secondary">{{heroes.length}}</span></h1>
       <ul class="list-group heroes">
         <li *ngFor="let hero of heroes" class="list-group-item">
-          <button type="button" class="btn btn-info" (click)="selectHero(hero.id)">{{hero.id}}</button> {{hero.name}}
+          <button type="button" class="btn btn-info" (click)="selectHero(hero.id);">{{hero.id}}</button> {{hero.name}}
         </li>
       </ul>
   </div>

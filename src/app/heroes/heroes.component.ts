@@ -1,4 +1,11 @@
 import { Component, OnInit , Input, inject} from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 import { Hero } from '../Hero';
 import { HEROES } from './mock-heroes'
 

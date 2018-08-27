@@ -20,15 +20,17 @@ export class VersusComponent implements OnInit {
   }
 
   versus(){
-    if(this.hero1.power > this.hero2.power){
-      this.winner = this.hero1;
-    }
-    else if(this.hero2.power > this.hero1.power){
-      this.winner = this.hero2
-    }
-    else{
-      this.winner = new Hero();
-      this.winner.name = "Pareggio";
+    if(this.hero1 && this.hero2){
+      if(this.hero1.power > this.hero2.power){
+        this.winner = this.hero1;
+      }
+      else if(this.hero2.power > this.hero1.power){
+        this.winner = this.hero2
+      }
+      else{
+        this.winner = new Hero();
+        this.winner.name = "None";
+      }
     }
 
     this.hero1 = null;

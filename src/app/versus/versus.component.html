@@ -4,7 +4,6 @@
     <div class="btn-group-vertical">
       <button type="button" class="btn btn-outline-dark" *ngFor="let hero of heroes" (click)="setFirstHero(hero);"> {{hero.name}}</button>
     </div>
-    <p *ngIf="hero1">hero: {{hero1.name}}</p>
   </div>
 </div>
 
@@ -13,14 +12,28 @@
     <div class="btn-group-vertical">
       <button type="button" class="btn btn-outline-dark" *ngFor="let hero of heroes" (click)="setSecondHero(hero);"> {{hero.name}}</button>
     </div>
-    <p *ngIf="hero2">hero: {{hero2.name}}</p>
+  </div>
+  <div class="centered" style="left: 20%;">
+      <p *ngIf="hero2"> <span class="badge badge-secondary"> {{hero2.name}} </span></p>
   </div>
 </div> 
 
 
 <div class="container split right left" style="background-color: #f000">
-  <div class="centered">
+    <div class="centered" style="left: 30%;">
+        <p *ngIf="hero1"> <span class="badge badge-secondary"> {{hero1.name}} </span></p>
+    </div>
+  <div class="centered" *ngIf="hero1 && hero2; else elseBlock">
     <button class="btn btn-dark" (click)="versus();"> Fight </button>
-    <p *ngIf="winner"> {{winner.name}} </p>
+  </div>
+  <ng-template #elseBlock>
+    <div class="centered">
+      <button class="btn btn-warning" (click)="versus();"> Select Heroes </button>
+    </div>
+  </ng-template>
+  <div class="centered" style="top: 60%;">
+    <p *ngIf="winner"> <span class="badge badge-success"> Winner Is: {{winner.name}} </span></p>
   </div>
 </div> 
+
+
