@@ -9,7 +9,7 @@ import { HEROES } from './mock-heroes'
 })
 export class HeroesComponent implements OnInit {
   tmpHero: Hero = new Hero();
-  lastId: number = 2;
+  lastId: number;
   canInsert = false;
   action = "Select Hero / Insert New Hero";
 
@@ -17,6 +17,8 @@ export class HeroesComponent implements OnInit {
 
   constructor() { 
     this.heroes = HEROES;
+    this.lastId = this.heroes.length;
+    console.log(this.lastId);
   }
 
   getHeroes(){

@@ -11,7 +11,7 @@ export class VersusComponent implements OnInit {
   @Input() heroes: Hero[] = HEROES;
   hero1: Hero;
   hero2: Hero;
-  Winner: any = null;
+  winner: any = null;
 
   constructor() { 
   }
@@ -21,12 +21,15 @@ export class VersusComponent implements OnInit {
 
   versus(){
     if(this.hero1.power > this.hero2.power){
-      this.Winner = this.hero1;
+      this.winner = this.hero1;
     }
     else if(this.hero2.power > this.hero1.power){
-      this.Winner = this.hero2
+      this.winner = this.hero2
     }
-    else{this.Winner = -1;}
+    else{
+      this.winner = new Hero();
+      this.winner.name = "Pareggio";
+    }
 
     this.hero1 = null;
     this.hero2 = null;

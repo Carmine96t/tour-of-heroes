@@ -1,23 +1,19 @@
+
 <div class="container split left">
   <div class="centered">
-    <ul class="list-group heroes">
-      <li *ngFor="let hero of heroes" class="list-group-item" (click)="setFirstHero(hero);">
-        {{hero.name}}
-      </li>
-    </ul>
-    <p>hero: {{hero1}}</p>
+    <div class="btn-group-vertical">
+      <button type="button" class="btn btn-outline-dark" *ngFor="let hero of heroes" (click)="setFirstHero(hero);"> {{hero.name}}</button>
+    </div>
+    <p *ngIf="hero1">hero: {{hero1.name}}</p>
   </div>
 </div>
 
 <div class="container split right">
   <div class="centered">
-    <ul class="list-group heroes">
-      <li *ngFor="let hero of heroes" class="list-group-item" (click)="setSecondHero(hero);">
-        {{hero.name}}
-      </li>
-    </ul>
-    <p>hero: {{hero2}}</p>
-  
+    <div class="btn-group-vertical">
+      <button type="button" class="btn btn-outline-dark" *ngFor="let hero of heroes" (click)="setSecondHero(hero);"> {{hero.name}}</button>
+    </div>
+    <p *ngIf="hero2">hero: {{hero2.name}}</p>
   </div>
 </div> 
 
@@ -25,5 +21,6 @@
 <div class="container split right left" style="background-color: #f000">
   <div class="centered">
     <button class="btn btn-dark" (click)="versus();"> Fight </button>
+    <p *ngIf="winner"> {{winner.name}} </p>
   </div>
 </div> 

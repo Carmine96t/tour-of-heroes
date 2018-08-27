@@ -10,5 +10,10 @@ export var HEROES: Hero[] = [
         id: 2,
         name: "Iron Man",
         power: 15000
+      },
+      {
+        id: 3,
+        name: "Thor",
+        power: 30000
       }
 ];
