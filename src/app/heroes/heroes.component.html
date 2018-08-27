@@ -1,0 +1,41 @@
+
+ <div class="container">
+        <h1> My Heroes <span class="badge badge-secondary">{{heroes.length}}</span></h1>
+      <ul class="list-group heroes">
+        <li *ngFor="let hero of heroes" class="list-group-item">
+          <button type="button" class="btn btn-info" (click)="selectHero(hero.id)">{{hero.id}}</button> {{hero.name}}
+        </li>
+      </ul>
+  </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="col">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="badge badge-dark">{{action}}</span>
+                  </div>
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" placeholder="Name" [(ngModel)]="tmpHero.name">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button" (click)="refreshName();">Refresh</button>
+                  </div>
+                </div>
+              <div class="input-group mb-3">
+                <input type="text" placeholder="Power" [(ngModel)]="tmpHero.power">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button" (click)="refreshPower();">Refresh</button>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-success" *ngIf="tmpHero.name != null && tmpHero.power <= 50000 && tmpHero.power != null; else notConform" (click)="addHero();"> Conferma </button>
+            <ng-template #notConform>
+              <button  class="btn btn-info" disabled=true> Insert name </button>
+            </ng-template>
+          </div>
+        </div>
+      </div>

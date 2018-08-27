@@ -1,0 +1,7 @@
+.container {
+    height: 75%;
+    display: table;
+    justify-content: center;
+    align-items: center; 
+    background-color: rgb(255, 255, 255);
+}
