@@ -1,4 +1,4 @@
-import { Component, OnInit , Input, inject} from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import { Hero } from '../Hero';
 import { HEROES } from './mock-heroes'
 
@@ -10,13 +10,18 @@ import { HEROES } from './mock-heroes'
 export class HeroesComponent implements OnInit {
   tmpHero: Hero = new Hero();
   lastId: number;
-  canInsert = false;
   action = "Select Hero / Insert New Hero";
 
   @Input() heroes: Hero[] = [];
 
   constructor() { 
-    this.heroes = HEROES;
+    let myItem = localStorage.getItem('1');
+    if(myItem){
+      this.heroes = JSON.parse(myItem);
+    }
+    else{
+      this.heroes = HEROES;
+    }
     this.lastId = this.heroes.length;
     console.log(this.lastId);
   }
@@ -41,6 +46,8 @@ export class HeroesComponent implements OnInit {
     }else{
       this.updateHero(this.tmpHero);
     }
+
+    localStorage.setItem('1', JSON.stringify(this.heroes));
     
     this.tmpHero = new Hero();
     this.action = "Select Hero / Insert New Hero";
@@ -49,6 +56,7 @@ export class HeroesComponent implements OnInit {
   updateHero(hero: Hero){
     this.heroes.find(x=>x.id === this.tmpHero.id).power = this.tmpHero.power;
     this.heroes.find(x=>x.id === this.tmpHero.id).name = this.tmpHero.name;
+    localStorage.setItem('1', JSON.stringify(this.heroes));
   }
 
   findHero(hero: Hero){
@@ -62,10 +70,12 @@ export class HeroesComponent implements OnInit {
     if(hero.id > 3){
       this.heroes.splice(this.heroes.indexOf(hero), 1);
       this.lastId = this.lastId - 1;
+      localStorage.setItem('1', JSON.stringify(this.heroes));
     }
 
     this.tmpHero = new Hero();
     this.action = "Select Hero / Insert New Hero";
+
   }
 
 
@@ -91,6 +101,10 @@ export class HeroesComponent implements OnInit {
 
     this.action = "Select Hero / Insert New Hero";
   }
+
+  /*clearData(){
+    localStorage.clear();
+  }*/
 
 
 

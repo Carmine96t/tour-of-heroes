@@ -1,4 +1,4 @@
-
+{{updateData()}}
 <div class="container split left">
   <div class="centered">
     <div class="btn-group-vertical">
@@ -19,8 +19,8 @@
 </div> 
 
 
-<div class="container split right left" style="background-color: #f000">
-    <div class="centered" style="left: 30%;">
+<div class="container split right left" style="background-color: #f000; width: 40%;">
+    <div class="centered" style="left: 25%;">
         <p *ngIf="hero1"> <span class="badge badge-secondary"> {{hero1.name}} </span></p>
     </div>
   <div class="centered" *ngIf="hero1 && hero2; else elseBlock">
@@ -28,7 +28,7 @@
   </div>
   <ng-template #elseBlock>
     <div class="centered">
-      <button class="btn btn-warning" (click)="versus();"> Select Heroes </button>
+      <button class="btn btn-warning"  disabled="true"> Select Heroes </button>
     </div>
   </ng-template>
   <div class="centered" style="top: 60%;">

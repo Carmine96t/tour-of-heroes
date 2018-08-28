@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Hero } from '../Hero';
 import { HEROES } from '../heroes/mock-heroes'
 
@@ -7,13 +7,20 @@ import { HEROES } from '../heroes/mock-heroes'
   templateUrl: './versus.component.html',
   styleUrls: ['./versus.component.css']
 })
-export class VersusComponent implements OnInit {
-  @Input() heroes: Hero[] = HEROES;
+export class VersusComponent implements OnInit{
+  @Input() heroes: Hero[] = [];
   hero1: Hero;
   hero2: Hero;
   winner: any = null;
 
   constructor() { 
+    let myItem = localStorage.getItem('1');
+    if(myItem){
+      this.heroes = JSON.parse(myItem);
+    }
+    else{
+      this.heroes = HEROES;
+    }
   }
 
   ngOnInit() {
@@ -39,10 +46,23 @@ export class VersusComponent implements OnInit {
 
   setFirstHero(hero: Hero){
     this.hero1 = hero;
+    this.winner = null;
+
   }
 
   setSecondHero(hero: Hero){
     this.hero2 = hero;
+    this.winner = null;
+  }
+
+  updateData(){
+    let myItem = localStorage.getItem('1');
+    if(myItem){
+      this.heroes = JSON.parse(myItem);
+    }
+    else{
+      this.heroes = HEROES;
+    }
   }
 
 }

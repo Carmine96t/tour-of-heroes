@@ -2,3 +2,8 @@
     color: #FFFFFF;
     background-color: #384047;
 }
+
+.responsive {
+    width: 100%;
+    height: auto;
+}
