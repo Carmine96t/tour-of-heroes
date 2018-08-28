@@ -1,11 +1,4 @@
 import { Component, OnInit , Input, inject} from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
 import { Hero } from '../Hero';
 import { HEROES } from './mock-heroes'
 
@@ -57,6 +50,24 @@ export class HeroesComponent implements OnInit {
     this.heroes.find(x=>x.id === this.tmpHero.id).power = this.tmpHero.power;
     this.heroes.find(x=>x.id === this.tmpHero.id).name = this.tmpHero.name;
   }
+
+  findHero(hero: Hero){
+    if(this.heroes.find(x => x.id === hero.id)){
+      return true;
+    }
+    return false;
+  }
+
+  removeHero(hero: Hero){
+    if(hero.id > 3){
+      this.heroes.splice(this.heroes.indexOf(hero), 1);
+      this.lastId = this.lastId - 1;
+    }
+
+    this.tmpHero = new Hero();
+    this.action = "Select Hero / Insert New Hero";
+  }
+
 
   selectHero(id){
     this.action = "Selected Heros info";
